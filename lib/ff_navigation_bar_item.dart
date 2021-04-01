@@ -31,7 +31,7 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   Color _getDerivedBorderColor() {
-    return theme.selectedItemBorderColor ?? theme.barBackgroundColor;
+    return theme.selectedItemBorderColor;
   }
 
   Color _getBorderColor(bool isOn) {
@@ -69,7 +69,7 @@ class FFNavigationBarItem extends StatelessWidget {
               ? theme.selectedItemTextStyle.fontWeight
               : theme.unselectedItemTextStyle.fontWeight,
           color: isSelected
-              ? selectedLabelColor ?? theme.selectedItemLabelColor
+              ? selectedLabelColor
               : theme.unselectedItemLabelColor,
           letterSpacing: isSelected ? 1.1 : 1.0,
         ),
@@ -92,7 +92,7 @@ class FFNavigationBarItem extends StatelessWidget {
         child: CircleAvatar(
           radius: innerRadius,
           backgroundColor: isSelected
-              ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor
+              ? selectedBackgroundColor
               : theme.unselectedItemBackgroundColor,
           child: _makeIcon(iconData),
         ),
@@ -107,7 +107,7 @@ class FFNavigationBarItem extends StatelessWidget {
     return Icon(
       iconData,
       color: isSelected
-          ? selectedForegroundColor ?? theme.selectedItemIconColor
+          ? selectedForegroundColor
           : theme.unselectedItemIconColor,
     );
   }
@@ -141,10 +141,10 @@ class FFNavigationBarItem extends StatelessWidget {
     selectedIndex = Provider.of<int>(context);
 
     selectedBackgroundColor =
-        selectedBackgroundColor ?? theme.selectedItemBackgroundColor;
+        selectedBackgroundColor;
     selectedForegroundColor =
-        selectedForegroundColor ?? theme.selectedItemIconColor;
-    selectedLabelColor = selectedLabelColor ?? theme.selectedItemLabelColor;
+        selectedForegroundColor;
+    selectedLabelColor = selectedLabelColor;
 
     bool isSelected = _isItemSelected();
     double itemHeight = itemWidth - 20;
