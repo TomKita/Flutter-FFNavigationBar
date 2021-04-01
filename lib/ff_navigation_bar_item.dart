@@ -69,7 +69,7 @@ class FFNavigationBarItem extends StatelessWidget {
               ? theme.selectedItemTextStyle.fontWeight
               : theme.unselectedItemTextStyle.fontWeight,
           color: isSelected
-              ? selectedLabelColor
+              ? selectedLabelColor ?? theme.selectedItemLabelColor
               : theme.unselectedItemLabelColor,
           letterSpacing: isSelected ? 1.1 : 1.0,
         ),
@@ -92,7 +92,7 @@ class FFNavigationBarItem extends StatelessWidget {
         child: CircleAvatar(
           radius: innerRadius,
           backgroundColor: isSelected
-              ? selectedBackgroundColor
+              ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor
               : theme.unselectedItemBackgroundColor,
           child: _makeIcon(iconData),
         ),
@@ -107,7 +107,7 @@ class FFNavigationBarItem extends StatelessWidget {
     return Icon(
       iconData,
       color: isSelected
-          ? selectedForegroundColor
+          ? selectedForegroundColor ?? theme.selectedItemIconColor
           : theme.unselectedItemIconColor,
     );
   }
@@ -141,10 +141,10 @@ class FFNavigationBarItem extends StatelessWidget {
     selectedIndex = Provider.of<int>(context);
 
     selectedBackgroundColor =
-        selectedBackgroundColor;
+        selectedBackgroundColor ?? theme.selectedItemBackgroundColor;
     selectedForegroundColor =
-        selectedForegroundColor;
-    selectedLabelColor = selectedLabelColor;
+        selectedForegroundColor ?? theme.selectedItemIconColor;
+    selectedLabelColor = selectedLabelColor ?? theme.selectedItemLabelColor;
 
     bool isSelected = _isItemSelected();
     double itemHeight = itemWidth - 20;
